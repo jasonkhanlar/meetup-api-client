@@ -153,7 +153,6 @@ abstract class AbstractMeetupClient extends Client
     {
         $default  = static::getDefaultParameters();
         $required = static::getRequiredParameters();
-        $config = Collection::fromConfig($config, $default, $required);
 
         $standardHeaders = array(
             'Accept-Charset' => 'utf-8',
@@ -164,7 +163,7 @@ abstract class AbstractMeetupClient extends Client
             'headers' => $standardHeaders,
         );
 
-        $config->add('request.options', $requestOptions);
+        $config = array_merge($default, $required, $requestOptions, $config);
 
         return $config;
     }
