@@ -22,7 +22,7 @@ class MeetupKeyAuthClient extends AbstractMeetupClient
     public static function getDefaultParameters()
     {
         return array(
-            'base_url' => '{scheme}://api.meetup.com/',
+            'base_uri' => '{scheme}://api.meetup.com/',
             'scheme'   => 'http',
         );
     }
@@ -34,7 +34,7 @@ class MeetupKeyAuthClient extends AbstractMeetupClient
      */
     public static function getRequiredParameters()
     {
-        return array('key', 'base_url');
+        return array('key', 'base_uri');
     }
 
     /**
@@ -47,7 +47,7 @@ class MeetupKeyAuthClient extends AbstractMeetupClient
     {
         $configuration = static::buildConfig($config);
 
-        $client = new self($configuration->get('base_url'), $configuration);
+        $client = new self($configuration->get('base_uri'), $configuration);
 
         $client->addSubscriber(new KeyAuthPlugin($configuration->get('key')));
 

@@ -22,7 +22,7 @@ class MeetupOAuthClient extends AbstractMeetupClient
     public static function getDefaultParameters()
     {
         return array(
-            'base_url' => '{scheme}://api.meetup.com/',
+            'base_uri' => '{scheme}://api.meetup.com/',
             'scheme'   => 'https',
         );
     }
@@ -37,7 +37,7 @@ class MeetupOAuthClient extends AbstractMeetupClient
         return array(
             'consumer_key',
             'consumer_secret',
-            'base_url'
+            'base_uri'
         );
     }
 
@@ -51,7 +51,7 @@ class MeetupOAuthClient extends AbstractMeetupClient
     {
         $configuration = static::buildConfig($config);
 
-        $client = new self($configuration->get('base_url'), $configuration);
+        $client = new self($configuration->get('base_uri'), $configuration);
 
         $client->addSubscriber(
             new OauthPlugin(
