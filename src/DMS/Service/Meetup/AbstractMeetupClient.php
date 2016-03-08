@@ -199,8 +199,8 @@ abstract class AbstractMeetupClient extends Client
             return;
         }
 
-        $rateFactor = (array_key_exists('rate_limit_factor', $config))? $config['rate_limit_factor'] : null;
-        $client->addSubscriber(new RateLimitPlugin($rateFactor));
+        //$rateFactor = (array_key_exists('rate_limit_factor', $config))? $config['rate_limit_factor'] : null;
+        //$client->addSubscriber(new RateLimitPlugin($rateFactor));
     }
 
     /**
