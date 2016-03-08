@@ -163,7 +163,11 @@ abstract class AbstractMeetupClient extends Client
             'headers' => $standardHeaders,
         );
 
-        $config = array_merge($default, $required, $requestOptions, $config);
+        $config = array_merge($default, $requestOptions, $config);
+
+        if ($missing = array_diff($required, array_keys($config))) {
+            throw new InvalidArgumentException('Config is missing the following keys: ' . implode(', ', $missing));
+        }
 
         return $config;
     }
