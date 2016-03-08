@@ -169,6 +169,9 @@ abstract class AbstractMeetupClient extends Client
             throw new \InvalidArgumentException('Config is missing the following keys: ' . implode(', ', $missing));
         }
 
+        $config['query']['key'] = $config['key'];
+        unset($config['key']);
+
         return $config;
     }
 
